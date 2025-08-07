@@ -260,7 +260,7 @@ button:focus {
     transition: .3s;
 }
 .navbar-brand.logo img {
-    max-height: 40px;
+    max-height: 80px;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -348,59 +348,98 @@ button:focus {
     margin-top: 30px;
 }
 
-/*::::::::::::::::::::::::::::::::::::
-   Featured Area
+/*:::::::::::::::::::::::::::::::::::: 
+   Featured Area 
 ::::::::::::::::::::::::::::::::::::*/
 
+/* Align heading and icon side by side */
+.heading-with-icon {
+    position: relative;       /* for ::after positioning */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Black hover background covering heading + icon */
+.heading-with-icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #000;
+    z-index: 0;
+    transition: height 0.3s ease;
+}
+
+/* Expand overlay on hover of the whole block */
+.single-featured-item-wrap:hover .heading-with-icon::after {
+    height: 100%;
+}
+
+/* Style the icon next to the heading */
+.heading-with-icon .featured-icon {
+    font-size: 28px;
+    color: #C0521E;
+    opacity: 0.8;
+    flex-shrink: 0;
+    padding-left: 3px;
+    position: relative;   /* to stay above ::after */
+    z-index: 1;
+}
+
+/* Featured item block below heading */
 .single-featured-item {
     padding: 15px;
     margin-bottom: 30px;
 }
 
+/* Card styling */
 .single-featured-item-wrap {
     background-color: #fff;
     box-shadow: 0 0 10px #eee;
 }
 
+/* Heading link style */
 .single-featured-item-wrap h3 a {
-    text-align: center;
     text-transform: uppercase;
-    padding: 15px;
     color: #000;
-    display: block;
+    text-decoration: none;
     position: relative;
     z-index: 1;
+    display: inline-block;
 }
 
-.single-featured-item-wrap:hover a {
-    color: #C0521E
+/* Hover effect on heading link text color */
+.single-featured-item-wrap:hover h3 a {
+    color: #C0521E;
 }
 
+/* Remove old hover background effect on a:after */
+.single-featured-item-wrap h3 a:after,
 .single-featured-item-wrap:hover a:after {
-    height: 100%;
+    display: none;
 }
 
-.single-featured-item-wrap h3 a:after {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 0;
-    background-color: #000;
-    z-index: -1;
-    left: 0;
-    top: 0;
-    -webkit-transition: .3s;
-    transition: .3s;
+/* Custom grid overrides */
+.col-lg-4.col-md-6 {
+  max-width: 33.33%;
+  flex: 0 0 33.33%;
 }
 
+
+/* ❌ Removed this because it's no longer needed:
 .featured-icon {
     font-size: 60px;
     position: absolute;
     top: 0;
     color: #C0521E;
     opacity: .5;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 }
+*/
+
 
 
 
@@ -504,7 +543,7 @@ button:focus {
     position: absolute;
     top: 0;
     left: 0;
-    width: 110px;
+    width: 150px;
     font-size: 14px;
     color: #ffffff;
     background: #000;
@@ -660,7 +699,6 @@ button:focus {
 /*::::::::::::::::::::::::::::::::::::
    Why choose Me Section
 ::::::::::::::::::::::::::::::::::::*/
-
 .single-why-me {
     position: relative;
     padding-right: 115px;
@@ -673,18 +711,19 @@ button:focus {
     color: #C0521E;
 }
 
+/* ✅ Updated to fix icon size and vertical alignment */
 .why-me-right .why-me-icon,
 .why-me-left .why-me-icon {
     color: #fff;
     position: absolute;
     font-size: 40px;
     width: 100px;
-    height: 100%;
+    height: 100px;              /* changed from 100% to fixed 100px */
     border: 1px solid #000;
     text-align: center;
-    line-height: 1;
+    line-height: 100px;         /* updated for vertical centering */
     right: 0;
-    bottom: 0;
+    bottom: auto;               /* was bottom: 0; now not needed */
     display: inline-block;
     background-color: #C0521E;
     -webkit-transition: .3s;
@@ -695,14 +734,14 @@ button:focus {
     text-align: left;
     padding-right: 0;
     padding-left: 115px;
-
 }
 
+/* Already correct, keeps icon aligned left for right-aligned items */
 .why-me-right .why-me-icon {
     right: auto;
     left: 0;
-
 }
+
 
 
 
