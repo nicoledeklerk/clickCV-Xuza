@@ -233,6 +233,21 @@
     .contact-form {
         padding: 15px;
     }
+
+    /* === START: Added to stack your featured items vertically on mobile === */
+    .row > div[class*="col-"] {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    .single-featured-item-wrap {
+        margin-bottom: 20px;
+        position: relative;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+    /* === END: Added stacking styles === */
 }
 
 /* Wide Mobile Layout: 480px. */
