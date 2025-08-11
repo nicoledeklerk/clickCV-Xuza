@@ -234,6 +234,20 @@
         padding: 15px;
     }
 
+    /* === START: Testimonial Section Mobile Fix === */
+    .testimonial-area,
+    .testimonials,
+    .single-testimonial {
+        display: block !important;
+        visibility: visible !important;
+        height: auto !important;
+        max-height: none !important;
+        opacity: 1 !important;
+        position: relative !important;
+        overflow: visible !important;
+    }
+    /* === END: Testimonial Section Mobile Fix === */
+
     /* === START: Added to stack your featured items vertically on mobile === */
     .row > div[class*="col-"] {
         flex: 0 0 100% !important;
